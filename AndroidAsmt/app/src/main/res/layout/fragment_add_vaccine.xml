@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.androidasmt.ui.clinic.AddVaccineFragmentModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.clinic.AddVaccineFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:errorEnabled="@{ !vm.errName.isEmpty() }"
+                app:errorText="@{ vm.errName }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_vaccine">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Vaccine Name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.name }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutDescription"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errDescription.isEmpty() }"
+                app:errorText="@{ vm.errDescription }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutName"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutName"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    android:gravity="top|left"
+                    android:minLines="5"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine"
+                    android:text="@={ vm.description }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutPrice"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errPricePerDose.isEmpty() }"
+                app:errorText="@{ vm.errPricePerDose }"
+                app:prefixText="RM "
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutDescription"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutDescription"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutDescription"
+                app:startIconDrawable="@drawable/ic_money">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Price Per Dose"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:text="@={`` + vm.pricePerDose}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Dose Interval (Optional)"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutPrice"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutPrice" />
+
+
+            <LinearLayout
+                android:id="@+id/layoutDayRange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/edtLayoutPrice"
+                app:layout_constraintStart_toStartOf="@id/edtLayoutPrice"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imgAddDayRange1"-->
+<!--                            android:layout_width="48dp"-->
+<!--                            android:layout_height="48dp"-->
+<!--                            android:src="@drawable/ic_add" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/edtDayRange1"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:ems="10"-->
+<!--                            android:hint="Dose 2"-->
+<!--                            android:inputType="number"-->
+<!--                            android:minHeight="48dp" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imgAddDayRange2"-->
+<!--                            android:layout_width="48dp"-->
+<!--                            android:layout_height="48dp"-->
+<!--                            android:src="@drawable/ic_add" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/edtDayRange2"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:ems="10"-->
+<!--                            android:hint="Dose 2333"-->
+<!--                            android:inputType="number"-->
+<!--                            android:minHeight="48dp" />-->
+<!--                    </LinearLayout>-->
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/errDayRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{ vm.errDayRange }"
+                android:textColor="@color/design_default_color_error"
+                android:visibility="@{ vm.errDayRange.isEmpty() ? View.GONE : View.VISIBLE }"
+                app:layout_constraintStart_toStartOf="@+id/layoutDayRange"
+                app:layout_constraintTop_toBottomOf="@+id/layoutDayRange"
+                tools:text="XXX" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="@{ !vm.isLoading }"
+                android:enabled="@{ !vm.isLoading }"
+                android:text="@{ vm.isLoading ? `Adding Vaccine...` : `Add Vaccine` }"
+                app:layout_constraintEnd_toEndOf="@+id/layoutDayRange"
+                app:layout_constraintStart_toStartOf="@+id/layoutDayRange"
+                app:layout_constraintTop_toBottomOf="@+id/errDayRange"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

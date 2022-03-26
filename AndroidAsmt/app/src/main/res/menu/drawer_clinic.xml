@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/page" >
+        <item
+            android:id="@+id/vaccineListFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_vaccine"
+            android:title="@string/fragment_title_vaccineList" />
+        <item
+            android:id="@+id/appointmentListFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_appointment"
+            android:title="@string/fragment_title_appointmentList" />
+    </group>
+    <group android:id="@+id/profile" >
+        <item
+            android:id="@+id/changePasswordFragment"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/fragment_title_changePassword" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+</menu>

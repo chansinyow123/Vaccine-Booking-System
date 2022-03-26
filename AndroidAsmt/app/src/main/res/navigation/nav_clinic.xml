@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_clinic"
+    app:startDestination="@id/vaccineListFragment">
+
+    <fragment
+        android:id="@+id/vaccineListFragment"
+        android:name="com.example.androidasmt.ui.clinic.VaccineListFragment"
+        android:label="@string/fragment_title_vaccineList"
+        tools:layout="@layout/fragment_vaccine_list" >
+        <action
+            android:id="@+id/action_vaccineListFragment_to_addVaccineFragment"
+            app:destination="@id/addVaccineFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+        <action
+            android:id="@+id/action_vaccineListFragment_to_editVaccineFragment"
+            app:destination="@id/editVaccineFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVaccineFragment"
+        android:name="com.example.androidasmt.ui.clinic.AddVaccineFragment"
+        android:label="@string/fragment_title_addVaccine"
+        tools:layout="@layout/fragment_add_vaccine" />
+    <fragment
+        android:id="@+id/editVaccineFragment"
+        android:name="com.example.androidasmt.ui.clinic.EditVaccineFragment"
+        android:label="@string/fragment_title_editVaccine"
+        tools:layout="@layout/fragment_edit_vaccine" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.androidasmt.ui.shared.ChangePasswordFragment"
+        android:label="@string/fragment_title_changePassword"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/appointmentListFragment"
+        android:name="com.example.androidasmt.ui.clinic.AppointmentListFragment"
+        android:label="@string/fragment_title_appointmentList"
+        tools:layout="@layout/fragment_appointment_list" >
+        <action
+            android:id="@+id/action_appointmentListFragment_to_appointmentDetailsFragment"
+            app:destination="@id/appointmentDetailsFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailsFragment"
+        android:name="com.example.androidasmt.ui.clinic.AppointmentDetailsFragment"
+        android:label="@string/fragment_title_appointmentDetails"
+        tools:layout="@layout/fragment_appointment_details" />
+    <dialog
+        android:id="@+id/vaccineInfoFragment"
+        android:name="com.example.androidasmt.ui.customer.VaccineInfoFragment"
+        android:label="VaccineInfoFragment"
+        tools:layout="@layout/fragment_vaccine_info" />
+</navigation>

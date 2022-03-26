@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.androidasmt.ui.admin.EditClinicFragmentModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.admin.EditClinicFragment">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:importantForAccessibility="no"
+            android:padding="1dp"
+            android:src="@drawable/ic_profile"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/img_rounded"
+            app:strokeColor="@android:color/holo_blue_dark"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/errImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{ vm.errImage }"
+            android:textColor="@color/design_default_color_error"
+            android:visibility="@{ vm.errImage.isEmpty() ? View.GONE : View.VISIBLE }"
+            app:layout_constraintEnd_toEndOf="@+id/image"
+            app:layout_constraintStart_toStartOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/image"
+            tools:text="XXX" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtLayoutEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/errImage"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Email"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@{ vm.email }" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtLayoutAddress"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:errorEnabled="@{ !vm.errAddress.isEmpty() }"
+            app:errorText="@{ vm.errAddress }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="@+id/edtLayoutEmail"
+            app:layout_constraintStart_toStartOf="@+id/edtLayoutEmail"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutEmail"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={ vm.address }" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="@{ !vm.isLoading }"
+            android:enabled="@{ !vm.isLoading }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            android:text="Edit"
+            app:layout_constraintStart_toStartOf="@+id/edtLayoutAddress"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutAddress" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:clickable="@{ !vm.isLoading }"
+            android:enabled="@{ !vm.isLoading }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            android:text="Delete"
+            app:layout_constraintStart_toEndOf="@+id/btnEdit"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutAddress" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

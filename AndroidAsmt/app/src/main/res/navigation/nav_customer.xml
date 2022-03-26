@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_customer"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.androidasmt.ui.customer.HomeFragment"
+        android:label="@string/fragment_title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_bookAppointmentFragment"
+            app:destination="@id/bookAppointmentFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.androidasmt.ui.customer.EditProfileFragment"
+        android:label="@string/fragment_title_editProfile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/bookAppointmentFragment"
+        android:name="com.example.androidasmt.ui.customer.BookAppointmentFragment"
+        android:label="@string/fragment_title_bookAppointment"
+        tools:layout="@layout/fragment_book_appointment" />
+    <dialog
+        android:id="@+id/vaccineInfoFragment"
+        android:name="com.example.androidasmt.ui.customer.VaccineInfoFragment"
+        android:label="@string/fragment_title_vaccineInfo"
+        tools:layout="@layout/fragment_vaccine_info" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.androidasmt.ui.shared.ChangePasswordFragment"
+        android:label="@string/fragment_title_changePassword"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/appointmentBookedFragment"
+        android:name="com.example.androidasmt.ui.customer.AppointmentBookedFragment"
+        android:label="Appointment Booked"
+        tools:layout="@layout/fragment_appointment_booked" >
+        <action
+            android:id="@+id/action_appointmentBookedFragment_to_statusFragment"
+            app:destination="@id/statusFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/statusFragment"
+        android:name="com.example.androidasmt.ui.customer.StatusFragment"
+        android:label="Status"
+        tools:layout="@layout/fragment_status" >
+        <action
+            android:id="@+id/action_statusFragment_to_qrCodeScannerFragment"
+            app:destination="@id/qrCodeScannerFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrCodeScannerFragment"
+        android:name="com.example.androidasmt.ui.customer.QrCodeScannerFragment"
+        android:label="@string/fragment_title_qrCodeScanner"
+        tools:layout="@layout/fragment_qr_code_scanner" />
+</navigation>

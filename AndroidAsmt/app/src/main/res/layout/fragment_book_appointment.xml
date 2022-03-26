@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.androidasmt.ui.customer.BookAppointmentFragmentModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.customer.BookAppointmentFragment">
+
+        <ProgressBar
+            android:id="@+id/progressBar5"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{ vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{ !vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp">
+
+                <TextView
+                    android:id="@+id/vaccineDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="This vaccine info"
+                    android:textColor="@color/link"
+                    app:layout_constraintStart_toStartOf="@+id/spnVaccine"
+                    app:layout_constraintTop_toBottomOf="@+id/spnVaccine"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgClinic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    android:importantForAccessibility="no"
+                    android:padding="1dp"
+                    android:src="@drawable/ic_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/img_rounded"
+                    app:strokeColor="@android:color/holo_blue_dark"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{ vm.address }"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgLocation"
+                    app:layout_constraintTop_toTopOf="@+id/imgLocation"
+                    tools:text="No 20, Jalan SJ 20, Taman Selayang Jaya, 58100, Batu Caves, Selangor" />
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{ vm.email }"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/imgEmail"
+                    app:layout_constraintTop_toTopOf="@+id/imgEmail"
+                    tools:text="chansinyow@gmail.com" />
+
+                <ImageView
+                    android:id="@+id/imgLocation"
+                    android:layout_width="18dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintStart_toEndOf="@+id/imgClinic"
+                    app:layout_constraintTop_toTopOf="@+id/imgClinic"
+                    app:srcCompat="@drawable/ic_location" />
+
+                <ImageView
+                    android:id="@+id/imgEmail"
+                    android:layout_width="19dp"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="8dp"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgClinic"
+                    app:layout_constraintStart_toEndOf="@+id/imgClinic"
+                    app:srcCompat="@drawable/ic_email" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="16dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgClinic" />
+
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Date"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+                <Spinner
+                    android:selection="@={ vm.dateIndex }"
+                    android:id="@+id/spnDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintEnd_toEndOf="@+id/txtDate"
+                    app:layout_constraintStart_toStartOf="@+id/txtDate"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDate"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/errDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_error"
+                    android:visibility="@{ vm.errDateTime.isEmpty() ? View.GONE : View.VISIBLE}"
+                    android:text="@{ vm.errDateTime }"
+                    app:layout_constraintEnd_toEndOf="@+id/spnDate"
+                    app:layout_constraintStart_toStartOf="@+id/spnDate"
+                    app:layout_constraintTop_toBottomOf="@+id/spnDate"
+                    tools:text="XXX" />
+
+                <TextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Time"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/spnDate"
+                    app:layout_constraintStart_toStartOf="@+id/spnDate"
+                    app:layout_constraintTop_toBottomOf="@+id/errDate" />
+
+                <Spinner
+                    android:selection="@={ vm.timeIndex }"
+                    android:id="@+id/spnTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintEnd_toEndOf="@+id/txtTime"
+                    app:layout_constraintStart_toStartOf="@+id/txtTime"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTime"
+                    tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+                <TextView
+                    android:id="@+id/errTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_error"
+                    app:layout_constraintEnd_toEndOf="@+id/spnTime"
+                    app:layout_constraintStart_toStartOf="@+id/spnTime"
+                    app:layout_constraintTop_toBottomOf="@+id/spnTime"
+                    android:visibility="@{ vm.errDateTime.isEmpty() ? View.GONE : View.VISIBLE}"
+                    android:text="@{ vm.errDateTime }"
+                    tools:text="XXX" />
+
+                <TextView
+                    android:id="@+id/txtVaccine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Vaccine"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/spnTime"
+                    app:layout_constraintStart_toStartOf="@+id/spnTime"
+                    app:layout_constraintTop_toBottomOf="@+id/errTime" />
+
+                <Spinner
+                    android:selection="@={ vm.vaccineIndex }"
+                    android:id="@+id/spnVaccine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintEnd_toEndOf="@+id/txtVaccine"
+                    app:layout_constraintStart_toStartOf="@+id/txtVaccine"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVaccine"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edtLayoutDescription"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:errorEnabled="@{ !vm.errDescription.isEmpty() }"
+                    app:errorText="@{ vm.errDescription }"
+                    app:layout_constraintEnd_toEndOf="@+id/spnVaccine"
+                    app:layout_constraintStart_toStartOf="@+id/spnVaccine"
+                    app:layout_constraintTop_toBottomOf="@+id/vaccineDialog">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        android:hint="Description (Optional)"
+                        android:inputType="textMultiLine"
+                        android:minLines="5"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:scrollbars="vertical"
+                        android:text="@={ vm.description }" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clickable="@{ !vm.isLoading }"
+                    android:enabled="@{ !vm.isLoading }"
+                    android:text="@{ vm.isLoading ? `Booking...` : `Book Appointment` }"
+                    app:layout_constraintEnd_toEndOf="@+id/edtLayoutDescription"
+                    app:layout_constraintStart_toStartOf="@+id/edtLayoutDescription"
+                    app:layout_constraintTop_toBottomOf="@+id/edtLayoutDescription"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

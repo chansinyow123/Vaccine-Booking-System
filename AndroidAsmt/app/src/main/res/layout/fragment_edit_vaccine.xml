@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.androidasmt.ui.clinic.EditVaccineFragmentModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.clinic.EditVaccineFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtLayoutName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:errorEnabled="@{ !vm.errName.isEmpty() }"
+            app:errorText="@{ vm.errName }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_vaccine">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vaccine Name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={ vm.name }" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtLayoutDescription"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:errorEnabled="@{ !vm.errDescription.isEmpty() }"
+            app:errorText="@{ vm.errDescription }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="@+id/edtLayoutName"
+            app:layout_constraintStart_toStartOf="@+id/edtLayoutName"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:gravity="top|left"
+                android:minLines="5"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
+                android:text="@={ vm.description }" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtLayoutPrice"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:errorEnabled="@{ !vm.errPricePerDose.isEmpty() }"
+            app:errorText="@{ vm.errPricePerDose }"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:prefixText="RM "
+            app:layout_constraintEnd_toEndOf="@+id/edtLayoutDescription"
+            app:layout_constraintStart_toStartOf="@+id/edtLayoutDescription"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutDescription"
+            app:startIconDrawable="@drawable/ic_money">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price Per Dose"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:text="@={`` + vm.pricePerDose}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/lblDayRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Dose Required:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintStart_toStartOf="@+id/edtLayoutPrice"
+            app:layout_constraintTop_toBottomOf="@+id/edtLayoutPrice" />
+
+        <LinearLayout
+            android:id="@+id/layoutDayRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/lblDayRange"
+            app:layout_constraintTop_toBottomOf="@+id/lblDayRange">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text="Minimum 3 Dose" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                tools:text="Dose 2 Interval: 14 day" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                tools:text="Dose 3 Interval: 28 day" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="@{ !vm.isLoading }"
+            android:enabled="@{ !vm.isLoading }"
+            android:text="Edit"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintStart_toStartOf="@+id/lblDayRange"
+            app:layout_constraintTop_toBottomOf="@+id/layoutDayRange" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:clickable="@{ !vm.isLoading }"
+            android:enabled="@{ !vm.isLoading }"
+            android:text="Delete"
+            android:visibility="@{!vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintStart_toEndOf="@+id/btnEdit"
+            app:layout_constraintTop_toTopOf="@+id/btnEdit" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.isInitializing ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

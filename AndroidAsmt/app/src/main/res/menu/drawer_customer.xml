@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<!--    <item android:title="xxx">-->
+<!--        <menu>-->
+<!--            <item android:title="xxx"/>-->
+<!--            <item android:title="xxx"/>-->
+<!--        </menu>-->
+<!--    </item>-->
+
+    <group android:id="@+id/page" >
+        <item
+            android:id="@+id/homeFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_clinic"
+            android:title="@string/fragment_title_home" />
+        <item
+            android:id="@+id/appointmentBookedFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_appointment"
+            android:title="@string/fragment_title_appointmentBooked" />
+    </group>
+    <group android:id="@+id/profile">
+        <item
+            android:id="@+id/editProfileFragment"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/fragment_title_editProfile" />
+        <item
+            android:id="@+id/changePasswordFragment"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/fragment_title_changePassword" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+</menu>

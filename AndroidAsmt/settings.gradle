@@ -1,0 +1,3 @@
+rootProject.name = "AndroidAsmt"
+include ':app'
+include ':app:test'

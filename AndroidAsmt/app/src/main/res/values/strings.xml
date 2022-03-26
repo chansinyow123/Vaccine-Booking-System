@@ -1,0 +1,39 @@
+<resources>
+    <!-- Default -->
+    <string name="app_name">AndroidAsmt</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- (Fragment Title) Anonymous -->
+    <string name="fragment_title_login">Login</string>
+    <string name="fragment_title_forgotPassword">Forgot Password</string>
+    <string name="fragment_title_register">Register</string>
+    <string name="fragment_title_resetPassword">Reset Password</string>
+    <!-- (Fragment Title) Shared -->
+    <string name="fragment_title_changePassword">Change Password</string>
+    <!-- (Fragment Title) Customer -->
+    <string name="fragment_title_home">Home</string>
+    <string name="fragment_title_editProfile">Edit Profile</string>
+    <string name="fragment_title_vaccines">Vaccines</string>
+    <string name="fragment_title_bookAppointment">Book Appointment</string>
+    <string name="fragment_title_vaccineInfo">Vaccine Info</string>
+    <string name="fragment_title_appointmentBooked">Appointment Booked</string>
+    <string name="fragment_title_status">Status</string>
+    <string name="fragment_title_changeAppointment">Change Appointment</string>
+    <string name="fragment_title_qrCodeScanner">QR Code Scanner</string>
+    <!-- (Fragment Title) Admin -->
+    <string name="fragment_title_clinic">Clinic</string>
+    <string name="fragment_title_accounts">Accounts</string>
+    <string name="fragment_title_addClinic">Add Clinic</string>
+    <string name="fragment_title_editClinic">Edit Clinic</string>
+    <string name="fragment_title_viewAccount">View Account</string>
+    <!-- (Fragment Title) Clinic -->
+    <string name="fragment_title_vaccineList">Vaccine List</string>
+    <string name="fragment_title_addVaccine">Add Vaccine</string>
+    <string name="fragment_title_editVaccine">Edit Vaccine</string>
+    <string name="fragment_title_qrCode">QR Code</string>
+    <string name="fragment_title_appointmentSlot">Appointment Slot</string>
+    <string name="fragment_title_appointmentList">Appointment List</string>
+    <string name="fragment_title_appointmentDetails">Appointment Details</string>
+    <!-- Others -->
+    <string name="logout">Log out</string>
+
+</resources>

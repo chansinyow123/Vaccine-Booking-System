@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_admin"
+    app:startDestination="@id/clinicFragment">
+
+    <fragment
+        android:id="@+id/accountsFragment"
+        android:name="com.example.androidasmt.ui.admin.AccountsFragment"
+        android:label="@string/fragment_title_accounts"
+        tools:layout="@layout/fragment_accounts" />
+    <dialog
+        android:id="@+id/viewAccountFragment"
+        android:name="com.example.androidasmt.ui.admin.ViewAccountFragment"
+        android:label="@string/fragment_title_viewAccount"
+        tools:layout="@layout/fragment_view_account" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.androidasmt.ui.shared.ChangePasswordFragment"
+        android:label="@string/fragment_title_changePassword"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/addClinicFragment"
+        android:name="com.example.androidasmt.ui.admin.AddClinicFragment"
+        android:label="@string/fragment_title_addClinic"
+        tools:layout="@layout/fragment_add_clinic" />
+    <fragment
+        android:id="@+id/editClinicFragment"
+        android:name="com.example.androidasmt.ui.admin.EditClinicFragment"
+        android:label="@string/fragment_title_editClinic"
+        tools:layout="@layout/fragment_edit_clinic" />
+    <fragment
+        android:id="@+id/clinicFragment"
+        android:name="com.example.androidasmt.ui.admin.ClinicFragment"
+        android:label="@string/fragment_title_clinic"
+        tools:layout="@layout/fragment_clinic" >
+        <action
+            android:id="@+id/action_clinicFragment_to_editClinicFragment"
+            app:destination="@id/editClinicFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+        <action
+            android:id="@+id/action_clinicFragment_to_addClinicFragment"
+            app:destination="@id/addClinicFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/deletedClinicFragment"
+        android:name="com.example.androidasmt.ui.admin.DeletedClinicFragment"
+        android:label="Deleted Clinic"
+        tools:layout="@layout/fragment_deleted_clinic" >
+        <action
+            android:id="@+id/action_deletedClinicFragment_to_undoDeletedClinicFragment"
+            app:destination="@id/undoDeletedClinicFragment"
+            app:enterAnim="@anim/left_in"
+            app:exitAnim="@anim/left_out"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/undoDeletedClinicFragment"
+        android:name="com.example.androidasmt.ui.admin.UndoDeletedClinicFragment"
+        android:label="Undo Deleted Clinic"
+        tools:layout="@layout/fragment_undo_deleted_clinic" />/>/>
+</navigation>

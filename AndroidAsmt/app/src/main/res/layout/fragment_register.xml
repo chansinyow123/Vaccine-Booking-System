@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="vm"
+            type="com.example.androidasmt.ui.anonymous.RegisterFragmentModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:importantForAccessibility="no"
+                android:padding="1dp"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/img_circle"
+                app:strokeColor="@android:color/holo_blue_dark"
+                app:strokeWidth="2dp" />
+
+            <TextView
+                android:id="@+id/errImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{ vm.errImage }"
+                android:textColor="@color/design_default_color_error"
+                android:visibility="@{ vm.errImage.isEmpty() ? View.GONE : View.VISIBLE }"
+                app:layout_constraintEnd_toEndOf="@+id/image"
+                app:layout_constraintStart_toStartOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/image"
+                tools:text="XXX" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:errorEnabled="@{ !vm.errName.isEmpty() }"
+                app:errorText="@{ vm.errName }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/errImage"
+                app:startIconDrawable="@drawable/ic_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.name }" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutIC"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errIC.isEmpty() }"
+                app:errorText="@{ vm.errIC }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutName"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutName"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutName"
+                app:startIconDrawable="@drawable/ic_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtIC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="IC (eg: 000123101531)"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.ic }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutPhone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errPhone.isEmpty() }"
+                app:errorText="@{ vm.errPhone }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutIC"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutIC"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutIC"
+                app:startIconDrawable="@drawable/ic_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.phone }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutAddress"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errAddress.isEmpty() }"
+                app:errorText="@{ vm.errAddress }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutPhone"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutPhone"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutPhone"
+                app:startIconDrawable="@drawable/ic_location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.address }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:errorEnabled="@{ !vm.errEmail.isEmpty() }"
+                app:errorText="@{ vm.errEmail }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutAddress"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutAddress"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutAddress"
+                app:startIconDrawable="@drawable/ic_profile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@={ vm.email }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLayoutPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="@{ !vm.errPassword.isEmpty() }"
+                app:errorText="@{ vm.errPassword }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutEmail"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutEmail"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutEmail"
+                app:startIconDrawable="@drawable/ic_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={ vm.password }" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="@{ !vm.isLoading }"
+                android:enabled="@{ !vm.isLoading }"
+                android:text="@{ vm.isLoading ? `Registering...` : `Register` }"
+                app:layout_constraintEnd_toEndOf="@+id/edtLayoutPassword"
+                app:layout_constraintStart_toStartOf="@+id/edtLayoutPassword"
+                app:layout_constraintTop_toBottomOf="@+id/edtLayoutPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

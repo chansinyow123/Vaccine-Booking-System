@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/page" >
+        <item
+            android:id="@+id/clinicFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_clinic"
+            android:title="@string/fragment_title_clinic" />
+        <item
+            android:id="@+id/accountsFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/fragment_title_accounts" />
+        <item
+            android:id="@+id/deletedClinicFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_clinic"
+            android:title="Deleted Clinic" />
+    </group>
+    <group >
+        <item
+            android:id="@+id/changePasswordFragment"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/fragment_title_changePassword" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+</menu>
